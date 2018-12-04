@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 
-import { EventsServiceService } from './services/events-service.service';
+import { services } from './services/index';
 import { components } from './components';
 import { material_modules } from './material-modules/material-modules';
 import { providers } from './material-modules/material-modules';
@@ -24,7 +24,7 @@ import { routes } from './events.routing';
     ...material_modules,
   ],
   providers: [
-    EventsServiceService,
+    ...services,
     ...providers
   ]
 })

@@ -1,0 +1,30 @@
+<mat-card>
+  <mat-card-header>
+    Edit Event
+    <mat-chip-list class="close">
+      <mat-chip (click)="closeEditing()">close</mat-chip>
+    </mat-chip-list>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="group">
+      <app-title [group]="group" [controlName]="'title'"></app-title>
+      <app-email [group]="group" [controlName]="'email'"></app-email>
+      <app-location [group]="group" [controlName]="'location'"></app-location>
+      <app-datepicker [group]="group" [controlName]="'startDate'"></app-datepicker>
+      <app-datepicker [group]="group" [controlName]="'endDate'"></app-datepicker>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Add Guest</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-guest [group]="group" [controlName]="'guest'"></app-guest>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-chip-list>
+      <mat-chip color="accent" selected (click)="save()">save</mat-chip>
+    </mat-chip-list>
+  </mat-card-actions>
+</mat-card>

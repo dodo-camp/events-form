@@ -1,10 +1,13 @@
 <mat-form-field class="form-field">
-  <input matInput placeholder="Guest Name" [(ngModel)]="name">
+  <input type="email" matInput placeholder="email" [(ngModel)]="name">
 </mat-form-field>
 <div class="guest-list">
-  <ul>
-    <li style="list-style-type:none" *ngFor="let guest of guests;trackBy: trackByFn">{{guest}}</li>
-  </ul>
+  <mat-chip-list *ngFor="let guest of guests;let i = index;trackBy: trackByFn">
+    <mat-chip [selectable]="selectable" [removable]="removable" (removed)="remove(i)">
+      {{guest}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+  </mat-chip-list>
 </div>
 <button class="add-btn" mat-mini-fab [disabled]="!name" (click)="addGuest(name)">
   <mat-icon>add</mat-icon>

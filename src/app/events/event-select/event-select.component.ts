@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { EventsServiceService } from '../services/events-service.service';
+import { FormGroup } from '@angular/forms';
+import { EventsService } from '../services/events-service.service';
+import { UtilityService } from '../services/utility.service';
 import { Events } from '../model/events.interface';
 
 @Component({
@@ -11,47 +12,42 @@ import { Events } from '../model/events.interface';
 export class EventSelectComponent implements OnInit {
   public group: FormGroup;
 
-  constructor(private fb: FormBuilder, private eventService: EventsServiceService) {
-    this.group = fb.group({
-      title: new FormControl('', [Validators.required]),
-      startDate: new FormControl('', [Validators.required]),
-      endDate: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
-      description: new FormControl(),
-      location: new FormControl('', [Validators.required]),
-      guests: new FormControl()
-    })
+  constructor(private eventService: EventsService, private utilityService: UtilityService) {
+    this._createFormGroups();
+  }
+
+  protected _createFormGroups() {
+    this.group = this.utilityService.createFormGroup();
   }
 
   ngOnInit() {
   }
 
   public saveEvent(group: FormGroup) {
-    if (!localStorage.getItem('events')) {
+    if (!localStorage.getItem('events'))
       this._setFirstEvent(group);
-    }
-    else {
+    else
       this._setNewEvent(group);
-    }
-    group.reset();
   }
 
   protected _setFirstEvent(group: FormGroup) {
     let events: Events = {
       data: []
     };
-    events.data.push(group.value);
-    let event = JSON.stringify(events);
-    localStorage.setItem('events', event);
-    this.eventService.eventsSubject(JSON.parse(localStorage.getItem('events')));
+    this._storeToLocalStorage(group, events);
   }
 
   protected _setNewEvent(group: FormGroup) {
     let events: Events = JSON.parse(localStorage.getItem('events'));
+    this._storeToLocalStorage(group, events);
+  }
+
+  protected _storeToLocalStorage(group: FormGroup, events: Events) {
     events.data.push(group.value);
     let event = JSON.stringify(events);
     localStorage.setItem('events', event);
     this.eventService.eventsSubject(JSON.parse(localStorage.getItem('events')));
+    group.reset();
   }
 
 }

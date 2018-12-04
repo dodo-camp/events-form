@@ -6,6 +6,7 @@ import { LocationComponent } from './event-select/components/event-details/locat
 import { EmailComponent } from './event-select/components/event-details/email/email.component';
 import { DescriptionComponent } from './event-select/components/event-details/description/description.component';
 import { GuestComponent} from './event-select/components/guest/guest.component';
+import { EventEditComponent } from './event-list/components/event-edit/event-edit.component';
 
 export const componentsMap = {
     eventsList: EventListComponent,
@@ -20,5 +21,6 @@ export const components: any[] = [
     LocationComponent,
     EmailComponent,
     DescriptionComponent,
-    GuestComponent
+    GuestComponent,
+    EventEditComponent
 ]

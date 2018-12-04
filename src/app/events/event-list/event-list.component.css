@@ -1,0 +1,18 @@
+.event-details {
+    width: inherit;
+}
+
+.mat-standard-chip {
+    min-height: unset;
+}
+
+.event-options {
+    margin-left: auto;
+}
+
+.event-edit {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    z-index: 999;
+}

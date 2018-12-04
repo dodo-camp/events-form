@@ -1,18 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-guest',
   templateUrl: './guest.component.html',
-  styleUrls: ['./guest.component.css']
+  styleUrls: ['./guest.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GuestComponent implements OnInit {
   @Input() group?: FormGroup;
-  @Input() controlName?: String;
-  public name: String;
-  public guests: Array<String> = new Array(0);
+  @Input() controlName?: string;
+  public name: string;
+  public guests: Array<string> = new Array(0);
+  public selectable: boolean = true;
+  public removable: boolean = true;
 
-  constructor() { }
+  constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this._watchOnControlChange();
@@ -20,8 +23,11 @@ export class GuestComponent implements OnInit {
 
   protected _watchOnControlChange() {
     this.group.controls["guests"].valueChanges.subscribe((guests) => {
-      if (!guests)
+      if (!guests)  //for reset
         this.guests.length = 0;
+      if (!this.guests.length && guests) //for populating
+        this.guests = guests;
+      this.cd.markForCheck();
     });
   }
 
@@ -29,6 +35,10 @@ export class GuestComponent implements OnInit {
     this.guests.push(name);
     this.name = "";
     this.group.controls["guests"].setValue(this.guests);
+  }
+
+  public remove(index: number) {
+    this.guests.splice(index, 1);
   }
 
   public trackByFn(index, item) {

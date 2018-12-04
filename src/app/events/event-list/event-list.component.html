@@ -1,3 +1,55 @@
-<ul>
-  <li style="list-style-type:none" *ngFor="let event of events">{{event.title}}</li>
-</ul>
+<div class="container mt-4">
+  <mat-card class="event-card">
+    <mat-card-header>
+      <mat-card-title>Events List</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card class="mb-4" *ngFor="let event of events.data;let i = index;trackBy: trackByFn">
+        <mat-card-header>{{event.title}}
+          <mat-chip-list class="event-options">
+            <mat-chip (click)="deleteEvent(i)">delete</mat-chip>
+            <mat-chip (click)="editEvent(i)">edit</mat-chip>
+          </mat-chip-list>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="d-flex flex-column event-details">
+            <span *ngIf="event.location" class="w-100">
+              <small>location :
+                <b>{{event.location}}</b>
+              </small>
+            </span>
+            <span *ngIf="event.startDate" class="w-100">
+              <small>start date :
+                <b>{{event.startDate}}</b>
+              </small>
+            </span>
+            <span *ngIf="event.endDate" class="w-100">
+              <small>end date :
+                <b>{{event.endDate}}</b>
+              </small>
+            </span>
+            <span *ngIf="event.description" class="w-100">
+              <small>description :
+                <b>{{event.description}}</b>
+              </small>
+            </span>
+            <span *ngIf="event.email" class="w-100">
+              <small>from :
+                <b>{{event.email}}</b>
+              </small>
+            </span>
+            <span *ngIf="event.guests?.length" class="w-100">
+              <small>guests : </small>
+              <mat-chip-list>
+                <mat-chip color="accent" selected *ngFor="let guest of event.guests">{{guest}}</mat-chip>
+              </mat-chip-list>
+            </span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="event-edit" *ngIf="edit">
+  <app-event-edit [data]="dataForEdit" (closeEdit)="closeEdit($event)" (saveNewEvent)="saveNewEvent($event)"></app-event-edit>
+</div>

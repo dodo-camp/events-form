@@ -1,12 +1,13 @@
 ///<reference types="@types/googlemaps" />
-import { Component, OnInit, Input, NgZone, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, NgZone, ViewChild, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
-  styleUrls: ['./location.component.css']
+  styleUrls: ['./location.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LocationComponent implements OnInit {
   @Input() group?: FormGroup;

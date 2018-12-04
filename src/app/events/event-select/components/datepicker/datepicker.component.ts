@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-datepicker',
   templateUrl: './datepicker.component.html',
-  styleUrls: ['./datepicker.component.css']
+  styleUrls: ['./datepicker.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatepickerComponent implements OnInit {
   @Input() group?: FormGroup;

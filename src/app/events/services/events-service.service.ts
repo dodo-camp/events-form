@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Events } from '../model/events.interface';
 
 @Injectable()
-export class EventsServiceService {
+export class EventsService {
   private $eventsSubject: BehaviorSubject<Events> = new BehaviorSubject(null);
   private $eventObservable: Observable<Events> = this.$eventsSubject.asObservable();
   constructor() { }
