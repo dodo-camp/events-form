@@ -11,7 +11,7 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class LocationComponent implements OnInit {
   @Input() group?: FormGroup;
-  @Input() controlName?: String;
+  @Input() controlName?: string;
   @ViewChild("search")
   public searchElementRef: ElementRef;
 

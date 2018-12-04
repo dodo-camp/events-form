@@ -7,6 +7,8 @@ import { EmailComponent } from './components/event-details/email/email.component
 import { DescriptionComponent } from './components/event-details/description/description.component';
 import { GuestComponent } from './components/guest/guest.component';
 import { EventEditComponent } from './event-list/components/event-edit/event-edit.component';
+import { TimeComponent } from './components/time/time.component';
+import { ChkboxComponent } from './components/chkbox/chkbox.component';
 
 export const componentsMap = {
     eventsList: EventListComponent,
@@ -22,5 +24,7 @@ export const components: any[] = [
     EmailComponent,
     DescriptionComponent,
     GuestComponent,
-    EventEditComponent
+    EventEditComponent,
+    TimeComponent,
+    ChkboxComponent
 ]

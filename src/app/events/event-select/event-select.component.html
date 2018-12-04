@@ -22,6 +22,21 @@
           </div>
         </div>
 
+        <div class="row">
+          <div class="com-md-6 col-lg-6">
+            <app-time [group]="group" [controlName]="'startTime'"></app-time>
+          </div>
+          <div class="com-md-6 col-lg-6">
+            <app-time [group]="group" [controlName]="'endTime'"></app-time>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-6">
+            <app-chkbox [group]="group" [controlName]="'allDay'"></app-chkbox>
+          </div>
+        </div>
+
         <mat-card>
           <mat-card-content>
             <div class="row">

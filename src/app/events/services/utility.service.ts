@@ -14,7 +14,10 @@ export class UtilityService {
       email: new FormControl('', [Validators.required, Validators.email]),
       description: new FormControl(),
       location: new FormControl('', [Validators.required]),
-      guests: new FormControl()
+      guests: new FormControl(),
+      startTime: new FormControl(),
+      endTime: new FormControl(),
+      allDay: new FormControl()
     });
     return group;
   }

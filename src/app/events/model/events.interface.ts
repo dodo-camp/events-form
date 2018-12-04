@@ -1,11 +1,13 @@
 export interface Data {
-    title?: String,
-    startDate?: String,
-    endDate?: String,
-    email?: String,
-    location?: String,
-    description?: String,
-    guests?: String[]
+    title?: string,
+    startDate?: string,
+    endDate?: string,
+    email?: string,
+    location?: string,
+    description?: string,
+    guests?: string[],
+    startTime?: string,
+    endTime?: string
 }
 
 export interface Events {

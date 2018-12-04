@@ -9,7 +9,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class EmailComponent implements OnInit {
   @Input() group?: FormGroup;
-  @Input() controlName?: String;
+  @Input() controlName?: string;
 
   constructor() { }
 

@@ -9,8 +9,8 @@ import { FormGroup } from '@angular/forms';
 })
 export class DatepickerComponent implements OnInit {
   @Input() group?: FormGroup;
-  @Input() controlName?: String;
-  public placeholder: String;
+  @Input() controlName?: string;
+  public placeholder: string;
 
   constructor() {
 

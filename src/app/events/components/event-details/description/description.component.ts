@@ -9,7 +9,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class DescriptionComponent implements OnInit {
   @Input() group?: FormGroup;
-  @Input() controlName?: String;
+  @Input() controlName?: string;
 
   constructor() { }
 

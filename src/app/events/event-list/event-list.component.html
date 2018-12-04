@@ -24,9 +24,19 @@
                 <b>{{event.startDate}}</b>
               </small>
             </span>
+            <span *ngIf="event.startTime" class="w-100">
+              <small>start time :
+                <b>{{event.startTime}}</b>
+              </small>
+            </span>
             <span *ngIf="event.endDate" class="w-100">
               <small>end date :
                 <b>{{event.endDate}}</b>
+              </small>
+            </span>
+            <span *ngIf="event.endTime" class="w-100">
+              <small>end time :
+                <b>{{event.endTime}}</b>
               </small>
             </span>
             <span *ngIf="event.description" class="w-100">
