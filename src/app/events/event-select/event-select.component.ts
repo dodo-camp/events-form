@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { EventsService } from '../services/events-service.service';
 import { UtilityService } from '../services/utility.service';
@@ -7,17 +7,19 @@ import { Events } from '../model/events.interface';
 @Component({
   selector: 'app-event-select',
   templateUrl: './event-select.component.html',
-  styleUrls: ['./event-select.component.css']
+  styleUrls: ['./event-select.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EventSelectComponent implements OnInit {
   public group: FormGroup;
 
-  constructor(private eventService: EventsService, private utilityService: UtilityService) {
+  constructor(private eventService: EventsService, private utilityService: UtilityService, private cd: ChangeDetectorRef) {
     this._createFormGroups();
   }
 
   protected _createFormGroups() {
     this.group = this.utilityService.createFormGroup();
+    this.cd.markForCheck();
   }
 
   ngOnInit() {
