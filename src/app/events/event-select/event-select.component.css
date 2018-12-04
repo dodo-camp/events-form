@@ -11,3 +11,7 @@
 .guest-card {
     width: 100%;
 }
+
+.container {
+    max-width: 600px;
+}
