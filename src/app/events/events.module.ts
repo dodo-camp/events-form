@@ -9,12 +9,13 @@ import { components } from './components';
 import { material_modules } from './material-modules/material-modules';
 import { providers } from './material-modules/material-modules';
 import { routes } from './events.routing';
+import { environment } from '../../environments/environment';
 
 @NgModule({
   declarations: [...components],
   imports: [
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyCMdl2byZOgAEJwJXO3LeTHwHT4JQWQ7Zo",
+      apiKey: environment.apikey,
       libraries: ["places"]
     }),
     CommonModule,
