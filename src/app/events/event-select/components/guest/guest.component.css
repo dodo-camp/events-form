@@ -1,0 +1,9 @@
+.add-btn {
+    position: absolute;
+    right: 0;
+}
+
+.guest-list {
+    overflow-y: scroll;
+    height:100px;
+}

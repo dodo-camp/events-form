@@ -1,0 +1,7 @@
+{
+    "/api/place/autocomplete": {
+        "target": "http://localhost:4200",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

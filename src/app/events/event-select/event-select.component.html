@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Select Event</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <form class="form mx-auto" [formGroup]="group">
+
+        <div class="row">
+          <div class="col-md-6 col-lg-6">
+            <app-title [group]="group" [controlName]="'title'"></app-title>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-6">
+            <app-datepicker [group]="group" [controlName]="'startDate'"></app-datepicker>
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <app-datepicker [group]="group" [controlName]="'endDate'"></app-datepicker>
+          </div>
+        </div>
+
+        <mat-card>
+          <mat-card-content>
+            <div class="row">
+              <div class="col-md-6 col-lg-6">
+                <mat-card class="detail-card">
+                  <mat-card-header>
+                    <mat-card-title>Event Details</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <app-location [group]="group" [controlName]="'location'"></app-location>
+                    <app-email [group]="group" [controlName]="'email'"></app-email>
+                    <app-description [group]="group" [controlName]="'description'"></app-description>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <mat-card class="guest-card">
+                  <mat-card-header>
+                    <mat-card-title>Add Guest</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <app-guest [group]="group" [controlName]="'guest'"></app-guest>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]="!group.valid" (click)="saveEvent(group)">Save Event</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
