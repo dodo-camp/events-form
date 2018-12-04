@@ -40,8 +40,13 @@ export class EventListComponent implements OnInit, OnDestroy {
   }
 
   public deleteEvent(index: number) {
-    this.events.data.splice(index, 1);
-    this._refreshEvents();
+    let ans = confirm("Do really want to delete this event");
+    if (ans) {
+      this.events.data.splice(index, 1);
+      this._refreshEvents();
+    }
+    else
+      return
   }
 
   protected _refreshEvents() {
