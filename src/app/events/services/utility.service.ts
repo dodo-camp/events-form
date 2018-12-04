@@ -11,10 +11,17 @@ export class UtilityService {
       title: new FormControl('', [Validators.required]),
       startDate: new FormControl('', [Validators.required]),
       endDate: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       description: new FormControl(),
       location: new FormControl('', [Validators.required]),
       guests: new FormControl()
+    });
+    return group;
+  }
+
+  public createGuestGroup(): FormGroup {
+    let group = this.fb.group({
+      guest: new FormControl('', [Validators.email, Validators.required])
     });
     return group;
   }

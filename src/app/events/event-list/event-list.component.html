@@ -1,5 +1,6 @@
 <div class="container mt-4">
-  <mat-card class="event-card">
+  <span *ngIf="!events.data?.length">No Events</span>
+  <mat-card class="event-card" *ngIf="events.data?.length">
     <mat-card-header>
       <mat-card-title>Events List</mat-card-title>
     </mat-card-header>

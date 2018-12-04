@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { UtilityService } from '../../services/utility.service';
 
 @Component({
   selector: 'app-guest',
@@ -10,12 +11,18 @@ import { FormGroup } from '@angular/forms';
 export class GuestComponent implements OnInit {
   @Input() group?: FormGroup;
   @Input() controlName?: string;
-  public name: string;
+  public guestGroup: FormGroup;
   public guests: Array<string> = new Array(0);
   public selectable: boolean = true;
   public removable: boolean = true;
 
-  constructor(private cd: ChangeDetectorRef) { }
+  constructor(private cd: ChangeDetectorRef, private utilityService: UtilityService) {
+    this._createGuestGroup()
+  }
+
+  protected _createGuestGroup() {
+    this.guestGroup = this.utilityService.createGuestGroup();
+  }
 
   ngOnInit() {
     this._watchOnControlChange();
@@ -31,10 +38,10 @@ export class GuestComponent implements OnInit {
     });
   }
 
-  public addGuest(name: string) {
-    this.guests.push(name);
-    this.name = "";
+  public addGuest({ guest }) {
+    this.guests.push(guest);
     this.group.controls["guests"].setValue(this.guests);
+    this.guestGroup.reset();
   }
 
   public remove(index: number) {

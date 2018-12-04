@@ -1,5 +1,5 @@
-<mat-form-field class="form-field">
-  <input type="email" matInput placeholder="email" [(ngModel)]="name">
+<mat-form-field class="form-field" [formGroup]="guestGroup">
+  <input type="email" matInput placeholder="email" formControlName="guest">
 </mat-form-field>
 <div class="guest-list">
   <mat-chip-list *ngFor="let guest of guests;let i = index;trackBy: trackByFn">
@@ -9,6 +9,6 @@
     </mat-chip>
   </mat-chip-list>
 </div>
-<button class="add-btn" mat-mini-fab [disabled]="!name" (click)="addGuest(name)">
+<button class="add-btn" mat-mini-fab [disabled]="!guestGroup.valid" (click)="addGuest(guestGroup.value)">
   <mat-icon>add</mat-icon>
 </button>
